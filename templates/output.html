@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Your Green Home - Smart Carbon Calculator
+        </title>
+        <link rel='stylesheet' href="{{ url_for('static', filename='css/style.css') }}">
+        <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+        <meta charset='UTF-8'>
+        <meta name="description" content="Calculate current and potential carbon (CO2) emissions, lighting costs, heating and hot water costs,
+        and the energy rating of a property/home, using features of the property such as number of rooms and quality
+        of insulation. Two accurate calculators using machine learning and neural networks.">
+        <meta name="keywords" content="Carbon, Emissions, CO2, Lighting, Heating, Hot Water, Cost, Eco, Green,
+        Environment, Environmental, Home, Property, Carbon Footprint, Machine Learning, Neural Network, AI">
+        <meta name="author" content="YourGreenHome">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="google-site-verification" content="C9dzmljTCdwVDE8hF86LhDMvtDGMPxkOftYv6SDQY9w" />
+        <script data-ad-client="ca-pub-4776462795177396" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    </head>
+    <body style="background-image: url('/static/img/LeafBG3.jpg')">
+        <div class='topnav' id='TopNav'>
+            <a href="{{ url_for('index') }}#body1"> <img src="{{ url_for('static', filename='img/Logo5.png') }}" onmouseover='this.src="{{ url_for('static', filename='img/Logo4.png') }}"' onmouseout='this.src="{{ url_for('static', filename='img/Logo5.png') }}"'> </a>
+            <div class='topnav-right'>
+                <a class='text' href="{{ url_for('index', _anchor='body2') }}">calculate</a>
+                <a class='text' href="{{ url_for('.index', _anchor='body3') }}">contact</a>
+                <a class='text' href="{{ url_for('.index', _anchor='body4') }}">about</a>
+            </div>
+        </div>
+    <div>
+        <br>
+        <br>
+        <br>
+    </div>
+    <div id='outputs' name='outputs' class='outputs'>
+        <div class='row'>
+            <div class='col'>
+                <p> current energy rating</p>
+                <div class='box1'>
+                    <p> {{ncnrg}} </p>
+                </div>
+            </div>
+            <div class='col'>
+                <p> potential energy rating</p>
+                <div class='box2'>
+                    <p class='pot'> {{npnrg}} </p>
+                </div>
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col'>
+                <p> current CO2 emissions</p>
+                <div class='box1'>
+                    <p> {{ncco2}} {{z}} </p>
+                </div>
+            </div>
+            <div class='col'>
+                <p> potential CO2 emissions</p>
+                <div  class='box2'>
+                    <p class='pot'> {{npco2}} {{z}} </p>
+                </div>
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col'>
+                <p> current lighting cost</p>
+                <div class='box1'>
+                    <p> {{y}} {{ncl}} </p>
+                </div>
+            </div>
+            <div class='col'>
+                <p> potential lighting cost</p>
+                <div class='box2'>
+                    <p class='pot'> {{y}} {{npl}} </p>
+                </div>
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col'>
+                <p> current heating + hot water cost</p>
+                <div class='box1'>
+                    <p> {{y}} {{nchhw}} </p>
+                </div>
+            </div>
+            <div class='col'>
+                <p> potential heating + hot water cost</p>
+                <div class='box2'>
+                    <p class='pot'> {{y}} {{nphhw}} </p>
+                </div>
+            </div>
+        </div>
+    </div>    
+    <script>
+        function NavBar() {
+            var x = document.getElementById('TopNav');
+            if (x.className === 'topnav') {
+                x.className += 'responsive';
+            } else {
+                x.className = 'topnav'
+            }
+        }
+    </script>
+    <script type="text/javascript">
+    function toggle1(div1,div2,a_1,a_2)
+    {
+        d1 = document.getElementById(div1);
+        d2 = document.getElementById(div2);
+        a1 = document.getElementById(a_1);
+        a2 = document.getElementById(a_2);
+        a1.style.textShadow = "0 0 10px white";
+        a2.style.textShadow = "none";
+        d1.style.display = "block";
+        d2.style.display = "none";
+    }
+    </script>
+    <script type="text/javascript">
+        function toggle2(div1,div2,a_1,a_2)
+        {
+        d1 = document.getElementById(div1);
+        d2 = document.getElementById(div2);
+        a1 = document.getElementById(a_1);
+        a2 = document.getElementById(a_2);
+        a2.style.textShadow = "0 0 10px white";
+        a1.style.textShadow = "none";
+        d2.style.display = "block";
+        d1.style.display = "none";
+        }
+    </script>
+    <script>
+        function send() {
+      
+          window.location.hash = '#calculate';
+        }
+      </script>
+    </body>
+</html>

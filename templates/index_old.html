@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Eco Home
+        </title>
+        <link rel='stylesheet' href="{{ url_for('static', filename='css/style.css') }}">
+        <script src="jquery.js"></script>
+        <script src="smoothscroll.js"> </script>
+        <meta charset='UTF-8'>
+    </head>
+    <body style="background-image: url('/static/img/LeafBG2.png')">
+    <div class='topnav' id='TopNav'>
+        <a href='#home' class='active'>home</a>
+        <a href='#calculate'>calculate</a>
+        <a href='#about'>about</a>
+        <a href='#contact'>contact</a>
+        <a href='javascript:void(0);' class='icon' onlick='NavBar()'>
+            <i class='fa fa-bars'></i>
+        </a>
+    </div>
+    <div class='home'>
+        <h1> Discover your home's environmental<br>
+        impact with AI.</h1>
+        <p> We are able to calculate your home’s current<br>
+            and potential CO2 emissions, lighting costs, and<br>
+            heating and hot water costs.
+        </p>
+        <p></p>
+        <p>
+            Our family of neural networks are trained using<br>
+            data from 500 000 homes located within<br>
+            England and Wales.
+        </p>
+        <p><br></p>
+        <p><br></p>
+    </div>
+    <p>
+        <a id='ax' href="javascript:toggle1('advanced', 'basic', 'ax', 'bx')">advanced</a>
+        /
+        <a id='bx' href="javascript:toggle2('advanced', 'basic', 'ax', 'bx')">basic</a>
+    </p>   
+    <div class='calculate1' id='advanced'>
+        <form name='calc' action="{{ url_for('advpy') }}" method='post'>
+            <fieldset>
+            <div class='row'>
+                <div class='col'>
+                    <p><div class='tooltip'>
+                        property type
+                        <span class='tooltiptext'>Type of property.
+                        </span>
+                    </div>
+                    </p>
+                <select name='property_type'>
+                    <option> house </option>
+                    <option> flat </option>
+                    <option> bungalow </option>
+                    <option> maisonette </option>
+                </select>
+                </div>
+                <div class='col'>
+                    <p><div class='tooltip2'>
+                        build form
+                        <span class='tooltiptext'>How the property
+                            is built in conjunction with
+                            neighbouring properties.
+                        </span>
+                    </div>
+                    </p>
+                <select name='build_form'>
+                    <option>semi-detached</option>
+                    <option>detached</option>
+                    <option>mid-terrace</option>
+                    <option>end-terrace</option>
+                    <option>enclosed mid-terrace</option>
+                    <option>enclosed end-terrace</option>
+                </select>
+                </div>
+            </div>
+            <div class='row'>
+                <div class='col'>
+                    <p><div class='tooltip'>
+                        total floor area
+                        <span class='tooltiptext'>Good estimate: Measure the width of your home
+                            and square this value. Multipy this value by the number of stories
+                            and add on any extensions.
+                        </span>
+                    </div>
+                    </p>
+                <input type='text' name='floor_area' required>
+                </div>
+                <div class='col'>
+                    <p>
+                    <div class='tooltip2'>
+                        number of habitable rooms
+                        <span class='tooltiptext'>Living rooms,
+                            dining rooms and bedrooms.
+                        </span>
+                    </div>
+                    </p>
+                <input type='text' name='hab_rooms' required>
+                </div>
+            </div>
+            <div class='row'>
+                <div class='col'>
+                    <p>
+                    <div class='tooltip'>
+                        number of open fireplaces
+                        <span class='tooltiptext'>Fireplaces that allow air to pass between
+                            the property and its external environment.
+                        </span>
+                    </div>
+                    </p>
+                <input type='text' name='open_fire' required>
+                </div>
+                <div class='col'>
+                    <p>
+                    <div class='tooltip2'>
+                        hotwater description
+                        <span class='tooltiptext'>How water is heated in the property.
+                        </span>
+                    </div>
+                    </p>
+                <select name='hotwater'>
+                    <option>from main system</option>
+                    <option>from main system + solar</option>
+                    <option>from secondary system</option>
+                    <option>gas boiler/circulator</option>
+                    <option>gas boiler/circulator + solar</option>
+                    <option>electric immersion</option>
+                    <option>electric immersion + solar</option>
+                    <option>electric heat pump</option>
+                    <option>solid fuel boiler</option>
+                    <option>community scheme</option>
+                    <option>community scheme + solar</option>
+                </select>
+                </div>
+            </div>
+            <div class='row'>
+                <div class='col'>
+                    <p>
+                    <div class='tooltip'>
+                        windows description
+                        <span class='tooltiptext'>Type of glazing on the windows
+                            in the property.
+                        </span>
+                    </div>
+                    </p>
+                <select name='windows'>
+                    <option>full double glazing</option>
+                    <option>partial double glazing</option>
+                    <option>full triple glazing</option>
+                    <option>partial triple glazing</option>
+                    <option>full secondary glazing</option>
+                    <option>partial secondary glazing</option>
+                    <option>full single glazing</option>
+                </select>
+                </div>
+                <div class='col'>
+                    <p>
+                    <div class='tooltip2'>
+                        walls description
+                        <span class='tooltiptext'>Quality and quantity of insulation in the walls
+                            of the property.
+                        </span>
+                    </div>
+                    </p>
+                <select name='walls'>
+                    <option>full insulation</option>
+                    <option>partial insulation</option>
+                    <option>no insulation</option>
+                </select>
+                </div>
+            </div>
+            <div class='row'>
+                <div class='col'>
+                    <p>
+                    <div class='tooltip'>
+                        roof description
+                        <span class='tooltiptext'>Quality and quantity of insulation in the roof
+                            of the property.
+                        </span>
+                    </div>
+                    </p>
+                <select name='roof'>
+                    <option>full insulation</option>
+                    <option>partial insulation</option>
+                    <option>no insulation</option>
+                </select>
+                </div>
+                <div class='col'>
+                    <p>
+                    <div class='tooltip2'>
+                        heating description
+                        <span class='tooltiptext'>How the property is heated.
+                            </span>
+                    </div>
+                    </p>
+                <select name='heating'>
+                    <option>gas boiler + radiators</option>
+                    <option>gas boiler + underfloor</option>
+                    <option>gas boiler + warm air</option>
+                    <option>electric boiler + radiators</option>
+                    <option>electric boiler + underfloor</option>
+                    <option>electric boiler + warm air</option>
+                    <option>biomass/wood + radiators</option>
+                    <option>biomass/wood + underfloor</option>
+                    <option>biomass/wood + room heaters</option>
+                    <option>multi-fuel + radiators</option>
+                    <option>multi-fuel + underfloor</option>
+                    <option>multi-fuel + room heaters</option>
+                    <option>community scheme + radiators</option>
+                    <option>community scheme + underfloor</option>
+                    <option>ground source heat pump + radiators</option>
+                    <option>ground source heat pump + underfloor</option>
+                    <option>ground source heat pump + warm air</option>
+                    <option>water source heat pump + radiators</option>       
+                    <option>water source heat pump + underfloor</option>
+                    <option>water source heat pump + warm air</option>
+                    <option>air source heat pump + radiators</option>
+                    <option>air source heat pump + underfloor</option>
+                    <option>air source heat pump + warm air</option>    
+                    <option>electric heaters</option>                            
+                </select>
+                </div>
+            </div>
+            <div class='row'>
+                <div class='col'>
+                    <p>
+                    <div class='tooltip'>
+                        storey height
+                        <span class='tooltiptext'>Average height of a storey/floor.
+                        </span>
+                    </div>
+                    </p>
+                <input type='text' name='height' required>
+                </div>
+                <div class='col'>
+                    <p>
+                    <div class='tooltip2'>
+                        photovoltaic solar cells
+                        <span class='tooltiptext'>Whether or not the property has solar
+                            panels for electricity - not hot water.
+                        </span>
+                    </div>
+                    </p>
+                <select name='solar'>
+                    <option>no</option>
+                    <option>yes</option>
+                </select>
+                </div>
+            </div>
+            <div class='row'>
+                <div class='col'>
+                    <p>
+                    <div class='tooltip'>
+                        mechanical ventilation
+                        <span class='tooltiptext'>Whether or not the property has
+                            mechanical ventilation. Natural means no mechanical
+                            ventilation.
+                        </span>
+                    </div>
+                    </p>
+                <select name='vent'>
+                    <option>natural</option>
+                    <option>mechanical: extract only</option>
+                    <option>mechanical: supply + extract</option>
+                </select>
+                </div>
+                <div class='col'>
+                    <p>
+                    <div class='tooltip2'>
+                        construction year band
+                        <span class='tooltiptext'>When the property was constructed.
+                        </span>
+                    </div>
+                    </p>
+                <select name='age'>
+                    <option>after 2006</option>
+                    <option>2003 - 2006</option>
+                    <option>1996 - 2002</option>
+                    <option>1991 - 1995</option>
+                    <option>1983 - 1990</option>
+                    <option>1976 - 1982</option>
+                    <option>1967 - 1975</option>
+                    <option>1950 - 1966</option>
+                    <option>1930 - 1949</option>
+                    <option>1900 - 1929</option>
+                    <option>before 1900</option>
+                </select>
+                </div>
+            </div>
+            <div class='submit'>
+            <p> <input type='submit'> </p>
+            </div>
+            </fieldset>
+        </form>
+    </div>
+    <div class='calculate2' id='basic'>
+        <form name='calc' action="{{ url_for('baspy') }}" method='post'>
+            <fieldset>
+            <div class='row'>
+                <div class='col'>
+                    <p><div class='tooltip'>
+                        property type
+                        <span class='tooltiptext'>Type of property.
+                        </span>
+                    </div>
+                    </p>
+                <select name='property_type'>
+                    <option> house </option>
+                    <option> flat </option>
+                    <option> bungalow </option>
+                    <option> maisonette </option>
+                </select>
+                </div>
+                <div class='col'>
+                    <p><div class='tooltip2'>
+                        build form
+                        <span class='tooltiptext'>How the property
+                            is built in conjunction with
+                            neighbouring properties.
+                        </span>
+                    </div>
+                    </p>
+                <select name='build_form'>
+                    <option>semi-detached</option>
+                    <option>detached</option>
+                    <option>mid-terrace</option>
+                    <option>end-terrace</option>
+                    <option>enclosed mid-terrace</option>
+                    <option>enclosed end-terrace</option>
+                </select>
+                </div>
+            </div>
+            <div class='row'>
+                <div class='col'>
+                    <p>
+                        <div class='tooltip2'>
+                            photovoltaic solar cells
+                            <span class='tooltiptext'>Whether or not the property has solar
+                                panels for electricity - not hot water.
+                            </span>
+                        </div>
+                        </p>
+                    <select name='solar'>
+                        <option>no</option>
+                        <option>yes</option>
+                    </select>
+                </div>
+                <div class='col'>
+                    <p>
+                    <div class='tooltip2'>
+                        number of habitable rooms
+                        <span class='tooltiptext'>Living rooms,
+                            dining rooms and bedrooms.
+                        </span>
+                    </div>
+                    </p>
+                <input type='text' name='hab_rooms' required>
+                </div>
+            </div>
+            <div class='row'>
+                <div class='col'>
+                    <p>
+                    <div class='tooltip'>
+                        number of open fireplaces
+                        <span class='tooltiptext'>Fireplaces that allow air to pass between
+                            the property and its external environment.
+                        </span>
+                    </div>
+                    </p>
+                <input type='text' name='open_fire' required>
+                </div>
+                <div class='col'>
+                    <p>
+                    <div class='tooltip2'>
+                        hotwater description
+                        <span class='tooltiptext'>How water is heated in the property.
+                        </span>
+                    </div>
+                    </p>
+                <select name='hotwater'>
+                    <option>from main system</option>
+                    <option>from main system + solar</option>
+                    <option>from secondary system</option>
+                    <option>gas boiler/circulator</option>
+                    <option>gas boiler/circulator + solar</option>
+                    <option>electric immersion</option>
+                    <option>electric immersion + solar</option>
+                    <option>electric heat pump</option>
+                    <option>solid fuel boiler</option>
+                    <option>community scheme</option>
+                    <option>community scheme + solar</option>
+                </select>
+                </div>
+            </div>
+            <div class='row'>
+                <div class='col'>
+                    <p>
+                    <div class='tooltip'>
+                        windows description
+                        <span class='tooltiptext'>Type of glazing on the windows
+                            in the property.
+                        </span>
+                    </div>
+                    </p>
+                <select name='windows'>
+                    <option>full double glazing</option>
+                    <option>partial double glazing</option>
+                    <option>full triple glazing</option>
+                    <option>partial triple glazing</option>
+                    <option>full secondary glazing</option>
+                    <option>partial secondary glazing</option>
+                    <option>full single glazing</option>
+                </select>
+                </div>
+                <div class='col'>
+                    <p>
+                    <div class='tooltip2'>
+                        walls description
+                        <span class='tooltiptext'>Quality and quantity of insulation in the walls
+                            of the property.
+                        </span>
+                    </div>
+                    </p>
+                <select name='walls'>
+                    <option>full insulation</option>
+                    <option>partial insulation</option>
+                    <option>no insulation</option>
+                </select>
+                </div>
+            </div>
+            <div class='row'>
+                <div class='col'>
+                    <p>
+                    <div class='tooltip'>
+                        roof description
+                        <span class='tooltiptext'>Quality and quantity of insulation in the roof
+                            of the property.
+                        </span>
+                    </div>
+                    </p>
+                <select name='roof'>
+                    <option>full insulation</option>
+                    <option>partial insulation</option>
+                    <option>no insulation</option>
+                </select>
+                </div>
+                <div class='col'>
+                    <p>
+                    <div class='tooltip2'>
+                        heating description
+                        <span class='tooltiptext'>How the property is heated.
+                            </span>
+                    </div>
+                    </p>
+                <select name='heating'>
+                    <option>gas boiler + radiators</option>
+                    <option>gas boiler + underfloor</option>
+                    <option>gas boiler + warm air</option>
+                    <option>electric boiler + radiators</option>
+                    <option>electric boiler + underfloor</option>
+                    <option>electric boiler + warm air</option>
+                    <option>biomass/wood + radiators</option>
+                    <option>biomass/wood + underfloor</option>
+                    <option>biomass/wood + room heaters</option>
+                    <option>multi-fuel + radiators</option>
+                    <option>multi-fuel + underfloor</option>
+                    <option>multi-fuel + room heaters</option>
+                    <option>community scheme + radiators</option>
+                    <option>community scheme + underfloor</option>
+                    <option>ground source heat pump + radiators</option>
+                    <option>ground source heat pump + underfloor</option>
+                    <option>ground source heat pump + warm air</option>
+                    <option>water source heat pump + radiators</option>       
+                    <option>water source heat pump + underfloor</option>
+                    <option>water source heat pump + warm air</option>
+                    <option>air source heat pump + radiators</option>
+                    <option>air source heat pump + underfloor</option>
+                    <option>air source heat pump + warm air</option>    
+                    <option>electric heaters</option>                            
+                </select>
+                </div>
+            </div>
+            <div class='row'>
+                <div class='col'>
+                    <p>
+                    <div class='tooltip'>
+                        mechanical ventilation
+                        <span class='tooltiptext'>Whether or not the property has
+                            mechanical ventilation. Natural means no mechanical
+                            ventilation.
+                        </span>
+                    </div>
+                    </p>
+                <select name='vent'>
+                    <option>natural</option>
+                    <option>mechanical: extract only</option>
+                    <option>mechanical: supply + extract</option>
+                </select>
+                </div>
+            </div>
+            <div class='submit'>
+            <p> <input type='submit'> </p>
+            </div>
+            </fieldset>
+        </form>
+    </div>
+    <div name='outputs'>
+        <p> current energy rating: {{ncnrg}} </p>
+        <p> potential energy rating: {{npnrg}} </p>
+        <p> current CO2 emissions: {{ncco2}} tonnes per year </p>
+        <p> potential CO2 emissions: {{npco2}} tonnes per year </p>
+        <p> current lighting cost: £{{ncl}} </p>
+        <p> potential lighting cost: £{{npl}} </p>
+        <p> current heating + hot water cost: £{{nchhw}} </p>
+        <p> potential heating + hot water cost: £{{nphhw}} </p>
+    </div>
+    <script>
+        function NavBar() {
+            var x = document.getElementById('TopNav');
+            if (x.className === 'topnav') {
+                x.className += 'responsive';
+            } else {
+                x.className = 'topnav'
+            }
+        }
+    </script>
+    <script type="text/javascript">
+    function toggle1(div1,div2,a_1,a_2)
+    {
+        d1 = document.getElementById(div1);
+        d2 = document.getElementById(div2);
+        a1 = document.getElementById(a_1);
+        a2 = document.getElementById(a_2);
+        a1.style.textShadow = "0 0 10px white";
+        a2.style.textShadow = "none";
+        d1.style.display = "block";
+        d2.style.display = "none";
+    }
+    </script>
+        <script type="text/javascript">
+            function toggle2(div1,div2,a_1,a_2)
+            {
+            d1 = document.getElementById(div1);
+            d2 = document.getElementById(div2);
+            a1 = document.getElementById(a_1);
+            a2 = document.getElementById(a_2);
+            a2.style.textShadow = "0 0 10px white";
+            a1.style.textShadow = "none";
+            d2.style.display = "block";
+            d1.style.display = "none";
+            }
+            </script>
+    </body>
+</html>

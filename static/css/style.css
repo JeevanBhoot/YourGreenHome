@@ -1,0 +1,571 @@
+@font-face{
+    font-family: Geomanist;
+    src: url('/static/font/Geomanist-Regular.otf');
+    font-display: swap;
+}
+
+h1 { font-weight:normal; }
+h2 { font-weight:normal; }
+
+.topnav {
+    background-color: #383838;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+    padding: 0 0;
+    margin: 0;
+    float: right;
+}
+
+.topnav .text {
+    float: left;
+    display: block;
+    color: #9b9b9b;
+    text-align: center;
+    padding: 19px 25px;
+    margin: 0;
+    text-decoration: none;
+    font-size: 17px;
+    font-family: Geomanist;
+}
+
+.topnav .text:hover {
+    color: white;
+}
+
+.topnav .icon {
+    display: none;
+}
+
+.topnav-right {
+    float: right;
+    margin: 0 20px;
+}
+
+body {
+    margin: 0;
+    background-color: #434343;
+    text-align: center;
+    font-family: Geomanist;
+    color: white;
+}
+
+body {
+    background: url('/static/img/LeafBG3.jpg');
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    padding: 0;
+    margin: 0;
+}
+
+.home h1 {
+    font-size: 400%;
+    padding: 7%;
+}
+
+.home p {
+    font-size:180%;
+    padding:4px;
+}
+
+.home img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 3%;
+    height: 1%;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+  
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.row {
+    overflow: hidden;
+    padding: 7px;
+}
+.col {
+    float: left;
+    width: 50%;
+    overflow: visible;
+}
+
+fieldset {
+    border: 0 ;
+}
+
+.calculate1 {
+    margin: auto;
+    width: 65%;
+}
+
+.calculate2 {
+    margin: auto;
+    width: 65%;
+}
+
+select {
+    text-align-last: center;
+    background-color: #565656;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-family: Geomanist;
+    width: 60%;
+    height: 40px;
+    margin: 0;
+    padding: 0 0;
+}
+
+input, select, option {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;  
+}
+
+input {
+    text-align: center;
+    background-color: #565656;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-family: Geomanist;
+    width: 60%;
+    height: 40px;
+    margin: 0;
+    padding: 0 0;
+}
+
+input:focus { 
+    outline:none;
+    border: 0;
+}
+
+select:focus { 
+    outline:none;
+    border: 0;
+}
+
+option:focus {
+    outline: none;
+    border: 0;
+}
+
+.submit {
+    padding: 20px;
+}
+
+.submit input{
+    background-color: #7c7c7c;
+    width: 20%
+}
+
+.submit input:hover{
+    outline: none;
+    border-color: white;
+    box-shadow: 0 0 10px white;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    padding: 0;
+    border: 0;
+    vertical-align: -3px;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 300px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 5px;
+    font-size: 80%;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: -5px;
+    left: 105%;
+    overflow: visible;
+}
+  
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    overflow: visible;
+}
+
+.tooltip2 {
+    position: relative;
+    display: inline-block;
+    padding: 0;
+    border: 0;
+    vertical-align: -3px;
+}
+
+.tooltip2 .tooltiptext {
+    visibility: hidden;
+    width: 300px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 5px;
+    font-size: 80%;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: -5px;
+    right: 105%;
+    overflow: visible;
+}
+  
+.tooltip2:hover .tooltiptext {
+    visibility: visible;
+    overflow: visible;
+}
+
+#basic { 
+    display:none; 
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+#ax {
+    text-shadow: 0 0 10px white;
+}
+
+.outputs {
+    width: 60%;
+    margin: auto;
+    padding: 5%;
+}
+
+.outputs .row {
+    padding: 3%;
+}
+
+.outputs .box2 {
+    background-color: #565656;
+    color: #00d305;
+    border-style: solid;
+    border: 10% #00d305;
+    width: 50%;
+    margin: auto;
+    border-radius: 8px;
+}
+
+.outputs .box1 {
+    background-color: #565656;
+    color: white;
+    border-style: solid;
+    border: 10% white;
+    width: 50%;
+    margin: auto;
+    border-radius: 8px;
+}
+
+.about {
+    font-size: 100%;
+    line-height: 230%;
+    letter-spacing: 0.8px;
+    padding: 140px 80px;
+}
+
+.contact {
+    width: 40%;
+    margin: auto;
+    padding: 100px 100px;
+}
+
+textarea {
+    text-align: center;
+    background-color: #565656;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-family: Geomanist;
+    width: 60%;
+    height: 160px;
+    margin: 0;
+    padding: 0 0;
+}
+
+textarea:focus { 
+    outline:none;
+    border: 0;
+}
+
+.topnav img {
+    padding: 10px 14px;
+    margin: 0 0;
+    vertical-align: middle;
+    float: left;
+}
+
+@media screen and (max-width: 1350px) {
+    .contact {
+        width: 60%;
+        margin: auto;
+        padding: 100px 100px;
+    }
+
+    .outputs {
+        width: 70%;
+        margin: auto;
+        padding: 5%;
+    }
+
+    .outputs .box2 {
+        background-color: #565656;
+        color: #00d305;
+        border-style: solid;
+        border: 10% #00d305;
+        width: 60%;
+        margin: auto;
+        border-radius: 8px;
+    }
+    
+    .outputs .box1 {
+        background-color: #565656;
+        color: white;
+        border-style: solid;
+        border: 10% white;
+        width: 60%;
+        margin: auto;
+        border-radius: 8px;
+    }
+
+    .home h1 {
+        font-size: 300%;
+        padding: 10%;
+    }
+    
+    .home p {
+        font-size: 150%;
+        padding:10px;
+    }
+
+    .calculate1 {
+        margin: auto;
+        width: 80%;
+    }
+    
+    .calculate2 {
+        margin: auto;
+        width: 80%;
+    }
+
+}
+
+@media screen and (max-width: 1000px) {
+    .contact {
+        width: 85%;
+        margin: auto;
+    }
+
+    .outputs {
+        width: 80%;
+        margin: auto;
+        padding: 5%;
+    }
+
+    .outputs .box2 {
+        background-color: #565656;
+        color: #00d305;
+        border-style: solid;
+        border: 10% #00d305;
+        width: 70%;
+        margin: auto;
+        border-radius: 8px;
+    }
+    
+    .outputs .box1 {
+        background-color: #565656;
+        color: white;
+        border-style: solid;
+        border: 10% white;
+        width: 70%;
+        margin: auto;
+        border-radius: 8px;
+    }
+
+    .home h1 {
+        font-size: 240%;
+        padding: 10% 5%;
+        padding-top: 20%;
+    }
+    
+    .home p {
+        font-size: 120%;
+        padding: 5px;
+    }
+
+    .calculate1 {
+        margin: auto;
+        width: 85%;
+        font-size: 80%;
+    }
+    
+    .calculate2 {
+        margin: auto;
+        width: 85%;
+        font-size: 80%
+    }
+
+    input, select, textarea {
+        font-size: 85%;
+        width: 70%;
+    }
+
+    .tooltip img, .tooltip2 img {
+        width: 45%;
+    }
+
+    .about {
+        font-size: 80%;
+        padding: 140px 0px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .contact {
+        width: 45%;
+        margin: auto;
+        font-size: 75%;
+        padding: 30 20;
+    }
+
+    .outputs {
+        width: 90%;
+        margin: auto;
+        padding: 5%;
+        font-size: 60%;
+    }
+
+    .outputs .box2 {
+        background-color: #565656;
+        color: #00d305;
+        border-style: solid;
+        border: 10% #00d305;
+        width: 90%;
+        margin: auto;
+        border-radius: 8px;
+    }
+    
+    .outputs .box1 {
+        background-color: #565656;
+        color: white;
+        border-style: solid;
+        border: 10% white;
+        width: 90%;
+        margin: auto;
+        border-radius: 8px;
+    }
+
+    .home h1 {
+        font-size: 150%;
+        padding: 10% 5%;
+        padding-top: 40%;
+    }
+    
+    .home p {
+        font-size: 90%;
+        padding: 5px;
+    }
+
+    .calculate1 {
+        margin: auto;
+        width: 97%;
+        font-size: 73%;
+    }
+    
+    .calculate2 {
+        margin: auto;
+        width: 97%;
+        font-size: 73%
+    }
+
+
+    input, select {
+        font-size: 75%;
+        width: 80%;
+        height: 35px;
+    }
+
+    .submit input {
+        width: 30%;
+    }
+
+
+    .tooltip img, .tooltip2 img {
+        width: 35%;
+    }
+
+    .tooltip .tooltiptext, .tooltip2 .tooltiptext {
+        width: 125px;
+    }
+
+    .about {
+        font-size: 70%;
+        padding: 140px 0px;
+    }
+
+    .topnav .text {
+        float: left;
+        display: block;
+        color: #9b9b9b;
+        text-align: center;
+        padding: 18px 11px;
+        margin: 0;
+        text-decoration: none;
+        font-size: 13px;
+        font-family: Geomanist;
+    }
+
+    .topnav img {
+        width: 12%;
+        padding: 11px 15px;
+        margin: 0 0;
+        vertical-align: middle;
+        float: left;
+    }
+
+    textarea {
+        height: 100px;
+        font-size: 75%;
+        width: 80%;
+    }
+
+    .contact input, .contact textarea {
+        width: 100%;
+    }
+
+    .contact .submit input {
+        width: 40%;
+    }
+}

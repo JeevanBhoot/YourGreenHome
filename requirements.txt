@@ -1,0 +1,7 @@
+flask
+werkzeug
+numpy
+scipy
+google-cloud-ndb
+app
+gunicorn==19.9.0

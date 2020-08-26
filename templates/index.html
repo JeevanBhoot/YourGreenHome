@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Your Green Home - Smart Carbon Calculator
+        </title>
+        <link rel='stylesheet' href="{{ url_for('static', filename='css/style.css') }}">
+        <script src="{{ url_for('static', filename='js/jquery.js') }}" async></script>
+        <script src="{{ url_for('static', filename='js/smoothscroll.js') }}" async> </script>
+        <link rel="preload" href="{{ url_for('static', filename='font/Geomanist-Regular.otf') }}" as="font" type="font/otf" crossorigin>
+        <meta charset='UTF-8'>
+        <meta name="description" content="Carbon (CO2) emissions calculator. Lighting costs calculator. Heating cost calculator. Hot water cost calculator.
+        Energy rating calculator. Calculate your home's carbon footprint and environmental impact, using features of the property.
+        Accurate calculators using machine learning and neural networks.">
+        <meta name="keywords" content="Carbon, Emissions, CO2, Lighting, Heating, Hot Water, Cost, Eco, Green,
+        Environment, Environmental, Home, Property, Carbon Footprint, Machine Learning, Neural Network, AI">
+        <meta name="author" content="YourGreenHome">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="google-site-verification" content="C9dzmljTCdwVDE8hF86LhDMvtDGMPxkOftYv6SDQY9w" />
+        <script data-ad-client="ca-pub-4776462795177396" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    </head>
+    <body style="background-image: url('/static/img/LeafBG3.jpg')">
+    <div class='topnav' id='TopNav'>
+        <a href='#body1'> <img src="{{ url_for('static', filename='img/Logo5.png') }}" onmouseover='this.src="{{ url_for('static', filename='img/Logo4.png') }}"' onmouseout='this.src="{{ url_for('static', filename='img/Logo5.png') }}"'> </a>
+        <div class='topnav-right'>
+            <a class='text' href='#body2'>calculate</a>
+            <a class='text' href='#body3'>contact</a>
+            <a class='text' href='#body4'>about</a>
+        </div>
+        <a href='javascript:void(0);' class='icon' onlick='NavBar()'>
+            <i class='fa fa-bars'></i>
+        </a>
+    </div>
+    <a id="body1"></a>
+    <div class='home'>
+        <h1> Discover your home's environmental<br>
+        impact with AI.</h1>
+        <p> We are able to calculate your home’s current<br>
+            and potential CO2 emissions, lighting costs,<br>
+            heating and hot water costs, and energy rating.
+        </p>
+        <p></p>
+        <p>
+            Our family of neural networks are trained using<br>
+            data from over 750 000 homes located within<br>
+            England and Wales.
+        </p>
+        <p><br></p>
+        <p><br></p>
+    </div>
+    <a id="body2"></a>
+    <p>
+        <br>
+        <br>
+        <br>
+        <br>
+        <a id='ax' href="javascript:toggle1('advanced', 'basic', 'ax', 'bx')">advanced</a>
+        /
+        <a id='bx' href="javascript:toggle2('advanced', 'basic', 'ax', 'bx')">basic</a>
+    </p>   
+    <div class='calculate1' id='advanced'>
+        <form id='calc' name='calc' action="{{ url_for('advanced_output') }}" method='post'>
+            <fieldset>
+            <div class='row'>
+                <div class='col' style="white-space:nowrap">
+                    <p>
+                        <div class='formlabel' style="display:inline; white-space:nowrap;">
+                            property type
+                        </div>
+                        <div class='tooltip'>
+                            <img src="{{ url_for('static', filename='img/info.png') }}" style="display:inline;" width='50%'>
+                            <span class='tooltiptext'>Type of property.
+                            </span>
+                        </div>
+                    </p>
+                    <select name='property_type'>
+                        <option> house </option>
+                        <option> flat </option>
+                        <option> bungalow </option>
+                        <option> maisonette </option>
+                    </select>
+                </div>
+                <div class='col'>
+                    <p>
+                        <div class='formlabel' style="display:inline; white-space:nowrap;">
+                            build form
+                        </div>
+                        <div class='tooltip2'>
+                            <img src="{{ url_for('static', filename='img/info.png') }}" style="display:inline;" width='50%'>
+                            <span class='tooltiptext'>How the property
+                                is built in conjunction with
+                                neighbouring properties.
+                            </span>
+                        </div>
+                    </p>
+                <select name='build_form'>
+                    <option>semi-detached</option>
+                    <option>detached</option>
+                    <option>mid-terrace</option>
+                    <option>end-terrace</option>
+                    <option>enclosed mid-terrace</option>
+                    <option>enclosed end-terrace</option>
+                </select>
+                </div>
+            </div>
+            <div class='row'>
+                <div class='col'>
+                    <p>
+                        <div class='formlabel' style="display:inline; white-space:nowrap;">
+                            heating description
+                        </div>
+                        <div class='tooltip'>
+                            <img src="{{ url_for('static', filename='img/info.png') }}" style="display:inline;" width='50%'>
+                            <span class='tooltiptext'>How the property is heated.
+                            </span>
+                        </div>
+                    </p>
+                <select name='heating'>
+                    <option>gas boiler + radiators</option>
+                    <option>gas boiler + underfloor</option>
+                    <option>gas boiler + warm air</option>
+                    <option>electric boiler + radiators</option>
+                    <option>electric boiler + underfloor</option>
+                    <option>electric boiler + warm air</option>
+                    <option>biomass/wood + radiators</option>
+                    <option>biomass/wood + underfloor</option>
+                    <option>biomass/wood + room heaters</option>
+                    <option>multi-fuel + radiators</option>
+                    <option>multi-fuel + underfloor</option>
+                    <option>multi-fuel + room heaters</option>
+                    <option>community scheme + radiators</option>
+                    <option>community scheme + underfloor</option>
+                    <option>ground source heat pump + radiators</option>
+                    <option>ground source heat pump + underfloor</option>
+                    <option>ground source heat pump + warm air</option>
+                    <option>water source heat pump + radiators</option>       
+                    <option>water source heat pump + underfloor</option>
+                    <option>water source heat pump + warm air</option>
+                    <option>air source heat pump + radiators</option>
+                    <option>air source heat pump + underfloor</option>
+                    <option>air source heat pump + warm air</option>    
+                    <option>electric heaters</option>                            
+                </select>
+                </div>
+                <div class='col'>
+                    <p>
+                        <div class='formlabel' style="display:inline; white-space:nowrap;">
+                            hot water description
+                        </div>
+                        <div class='tooltip2'>
+                            <img src="{{ url_for('static', filename='img/info.png') }}" style="display:inline;" width='50%'>
+                            <span class='tooltiptext'>How water is heated in the property.
+                            </span>
+                        </div>
+                    </p>
+                <select name='hotwater'>
+                    <option>from main system</option>
+                    <option>from main system + solar</option>
+                    <option>from secondary system</option>
+                    <option>gas boiler/circulator</option>
+                    <option>gas boiler/circulator + solar</option>
+                    <option>electric immersion</option>
+                    <option>electric immersion + solar</option>
+                    <option>electric heat pump</option>
+                    <option>solid fuel boiler</option>
+                    <option>community scheme</option>
+                    <option>community scheme + solar</option>
+                </select>
+                </div>
+            </div>
+            <div class='row'>
+                <div class='col'>
+                    <p>
+                        <div class='formlabel' style="display:inline; white-space:nowrap;">
+                            walls description
+                        </div>
+                        <div class='tooltip'>
+                            <img src="{{ url_for('static', filename='img/info.png') }}" style="display:inline;" width='50%'>
+                            <span class='tooltiptext'>Quality and quantity of insulation in the walls
+                                of the property.
+                            </span>
+                        </div>
+                    </p>
+                <select name='walls'>
+                    <option>full insulation</option>
+                    <option>partial insulation</option>
+                    <option>no insulation</option>
+                </select>
+                </div>
+                <div class='col'>
+                    <p>
+                        <div class='formlabel' style="display:inline; white-space:nowrap;">
+                            roof description
+                        </div>
+                        <div class='tooltip2'>
+                            <img src="{{ url_for('static', filename='img/info.png') }}" style="display:inline;" width='50%'>
+                            <span class='tooltiptext'>Quality and quantity of insulation in the roof
+                                of the property.
+                            </span>
+                        </div>
+                    </p>
+                <select name='roof'>
+                    <option>full insulation</option>
+                    <option>partial insulation</option>
+                    <option>no insulation</option>
+                </select>
+                </div>
+            </div>
+            <div class='row'>
+                <div class='col'>
+                    <p>
+                        <div class='formlabel' style="display:inline; white-space:nowrap;">
+                            windows description
+                        </div>
+                        <div class='tooltip'>
+                            <img src="{{ url_for('static', filename='img/info.png') }}" style="display:inline;" width='50%'>
+                            <span class='tooltiptext'>Type of glazing on the windows
+                                in the property.
+                            </span>
+                        </div>
+                    </p>
+                <select name='windows'>
+                    <option>full double glazing</option>
+                    <option>partial double glazing</option>
+                    <option>full triple glazing</option>
+                    <option>partial triple glazing</option>
+                    <option>full secondary glazing</option>
+                    <option>partial secondary glazing</option>
+                    <option>full single glazing</option>
+                </select>
+                </div>
+                <div class='col'>
+                    <p>
+                        <div class='formlabel' style="display:inline; white-space:nowrap;">
+                            photovoltaic solar cells
+                        </div>
+                        <div class='tooltip2'>
+                            <img src="{{ url_for('static', filename='img/info.png') }}" style="display:inline;" width='50%'>
+                            <span class='tooltiptext'>Whether or not the property has solar
+                                panels for electricity - not hot water.
+                            </span>
+                        </div>
+                    </p>
+                <select name='solar'>
+                    <option>no</option>
+                    <option>yes</option>
+                </select>
+                </div>
+            </div>
+            <div class='row'>
+                <div class='col'>
+                    <p>
+                        <div class='formlabel' style="display:inline; white-space:nowrap;">
+                            number of open fireplaces
+                        </div>
+                        <div class='tooltip'>
+                            <img src="{{ url_for('static', filename='img/info.png') }}" style="display:inline;" width='50%'>
+                            <span class='tooltiptext'>Fireplaces that allow air to pass between
+                                the property and its external environment.
+                            </span>
+                        </div>
+                    </p>
+                <input type='text' name='open_fire' required>
+                </div>
+                <div class='col'>
+                    <p>
+                        <div class='formlabel' style="display:inline; white-space:nowrap;">
+                            mechanical ventilation
+                        </div>
+                        <div class='tooltip2'>
+                            <img src="{{ url_for('static', filename='img/info.png') }}" style="display:inline;" width='50%'>
+                            <span class='tooltiptext'>Whether or not the property has
+                                mechanical ventilation.
+                            </span>
+                        </div>
+                    </p>
+                <select name='vent'>
+                    <option>no: natural</option>
+                    <option>yes: extract only</option>
+                    <option>yes: supply + extract</option>
+                </select>
+                </div>
+            </div>
+            <div class='row'>
+                <div class='col'>
+                    <p>
+                        <div class='formlabel' style="display:inline; white-space:nowrap;">
+                            number of habitable rooms
+                        </div>
+                        <div class='tooltip'>
+                            <img src="{{ url_for('static', filename='img/info.png') }}" style="display:inline;" width='50%'>
+                            <span class='tooltiptext'>Living rooms,
+                                dining rooms and bedrooms only.
+                            </span>
+                        </div>
+                    </p>
+                <input type='text' name='hab_rooms' required>
+                </div>
+                <div class='col'>
+                    <p>
+                        <div class='formlabel' style="display:inline; white-space:nowrap;">
+                            total floor area
+                        </div>
+                        <div class='tooltip2'>
+                            <img src="{{ url_for('static', filename='img/info.png') }}" style="display:inline;" width='50%'>
+                            <span class='tooltiptext'>Units: Sqaure Metres. Good estimate: Measure the width of your home
+                                and square this value. Multipy this value by the number of stories
+                                and add on any extensions.
+                            </span>
+                        </div>
+                    </p>
+                <input type='text' name='floor_area' required>
+                </div>
+            </div>
+            <div class='row'>
+                <div class='col'>
+                    <p>
+                        <div class='formlabel' style="display:inline; white-space:nowrap;">
+                            storey height
+                        </div>
+                        <div class='tooltip'>
+                            <img src="{{ url_for('static', filename='img/info.png') }}" style="display:inline;" width='50%'>
+                            <span class='tooltiptext'>Units: Metres. Average height of a storey/floor.
+                            </span>
+                        </div>
+                    </p>
+                <input type='text' name='height' required>
+                </div>
+                <div class='col'>
+                    <p>
+                        <div class='formlabel' style="display:inline; white-space:nowrap;">
+                            construction year band
+                        </div>
+                        <div class='tooltip2'>
+                            <img src="{{ url_for('static', filename='img/info.png') }}" style="display:inline;" width='50%'>
+                            <span class='tooltiptext'>When the property was constructed.
+                            </span>
+                        </div>
+                    </p>
+                <select name='age'>
+                    <option>after 2006</option>
+                    <option>2003 - 2006</option>
+                    <option>1996 - 2002</option>
+                    <option>1991 - 1995</option>
+                    <option>1983 - 1990</option>
+                    <option>1976 - 1982</option>
+                    <option>1967 - 1975</option>
+                    <option>1950 - 1966</option>
+                    <option>1930 - 1949</option>
+                    <option>1900 - 1929</option>
+                    <option>before 1900</option>
+                </select>
+                </div>
+            </div>
+            <div class='submit'>
+            <p> <input type='submit' onclick="href='#body2'"> </p>
+            </div>
+            </fieldset>
+        </form>
+    </div>
+    <div class='calculate2' id='basic'>
+        <form id='calc' name='calc' action="{{ url_for('basic_output') }}" method='post'>
+            <fieldset>
+                <div class='row'>
+                    <div class='col' style="white-space:nowrap">
+                        <p>
+                            <div class='formlabel' style="display:inline; white-space:nowrap;">
+                                property type
+                            </div>
+                            <div class='tooltip'>
+                                <img src="{{ url_for('static', filename='img/info.png') }}" style="display:inline;" width='50%'>
+                                <span class='tooltiptext'>Type of property.
+                                </span>
+                            </div>
+                        </p>
+                        <select name='property_type'>
+                            <option> house </option>
+                            <option> flat </option>
+                            <option> bungalow </option>
+                            <option> maisonette </option>
+                        </select>
+                    </div>
+                    <div class='col'>
+                        <p>
+                            <div class='formlabel' style="display:inline; white-space:nowrap;">
+                                build form
+                            </div>
+                            <div class='tooltip2'>
+                                <img src="{{ url_for('static', filename='img/info.png') }}" style="display:inline;" width='50%'>
+                                <span class='tooltiptext'>How the property
+                                    is built in conjunction with
+                                    neighbouring properties.
+                                </span>
+                            </div>
+                        </p>
+                    <select name='build_form'>
+                        <option>semi-detached</option>
+                        <option>detached</option>
+                        <option>mid-terrace</option>
+                        <option>end-terrace</option>
+                        <option>enclosed mid-terrace</option>
+                        <option>enclosed end-terrace</option>
+                    </select>
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class='col'>
+                        <p>
+                            <div class='formlabel' style="display:inline; white-space:nowrap;">
+                                heating description
+                            </div>
+                            <div class='tooltip'>
+                                <img src="{{ url_for('static', filename='img/info.png') }}" style="display:inline;" width='50%'>
+                                <span class='tooltiptext'>How the property is heated.
+                                </span>
+                            </div>
+                        </p>
+                    <select name='heating'>
+                        <option>gas boiler + radiators</option>
+                        <option>gas boiler + underfloor</option>
+                        <option>gas boiler + warm air</option>
+                        <option>electric boiler + radiators</option>
+                        <option>electric boiler + underfloor</option>
+                        <option>electric boiler + warm air</option>
+                        <option>biomass/wood + radiators</option>
+                        <option>biomass/wood + underfloor</option>
+                        <option>biomass/wood + room heaters</option>
+                        <option>multi-fuel + radiators</option>
+                        <option>multi-fuel + underfloor</option>
+                        <option>multi-fuel + room heaters</option>
+                        <option>community scheme + radiators</option>
+                        <option>community scheme + underfloor</option>
+                        <option>ground source heat pump + radiators</option>
+                        <option>ground source heat pump + underfloor</option>
+                        <option>ground source heat pump + warm air</option>
+                        <option>water source heat pump + radiators</option>       
+                        <option>water source heat pump + underfloor</option>
+                        <option>water source heat pump + warm air</option>
+                        <option>air source heat pump + radiators</option>
+                        <option>air source heat pump + underfloor</option>
+                        <option>air source heat pump + warm air</option>    
+                        <option>electric heaters</option>                            
+                    </select>
+                    </div>
+                    <div class='col'>
+                        <p>
+                            <div class='formlabel' style="display:inline; white-space:nowrap;">
+                                hot water description
+                            </div>
+                            <div class='tooltip2'>
+                                <img src="{{ url_for('static', filename='img/info.png') }}" style="display:inline;" width='50%'>
+                                <span class='tooltiptext'>How water is heated in the property.
+                                </span>
+                            </div>
+                        </p>
+                    <select name='hotwater'>
+                        <option>from main system</option>
+                        <option>from main system + solar</option>
+                        <option>from secondary system</option>
+                        <option>gas boiler/circulator</option>
+                        <option>gas boiler/circulator + solar</option>
+                        <option>electric immersion</option>
+                        <option>electric immersion + solar</option>
+                        <option>electric heat pump</option>
+                        <option>solid fuel boiler</option>
+                        <option>community scheme</option>
+                        <option>community scheme + solar</option>
+                    </select>
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class='col'>
+                        <p>
+                            <div class='formlabel' style="display:inline; white-space:nowrap;">
+                                walls description
+                            </div>
+                            <div class='tooltip'>
+                                <img src="{{ url_for('static', filename='img/info.png') }}" style="display:inline;" width='50%'>
+                                <span class='tooltiptext'>Quality and quantity of insulation in the walls
+                                    of the property.
+                                </span>
+                            </div>
+                        </p>
+                    <select name='walls'>
+                        <option>full insulation</option>
+                        <option>partial insulation</option>
+                        <option>no insulation</option>
+                    </select>
+                    </div>
+                    <div class='col'>
+                        <p>
+                            <div class='formlabel' style="display:inline; white-space:nowrap;">
+                                roof description
+                            </div>
+                            <div class='tooltip2'>
+                                <img src="{{ url_for('static', filename='img/info.png') }}" style="display:inline;" width='50%'>
+                                <span class='tooltiptext'>Quality and quantity of insulation in the roof
+                                    of the property.
+                                </span>
+                            </div>
+                        </p>
+                    <select name='roof'>
+                        <option>full insulation</option>
+                        <option>partial insulation</option>
+                        <option>no insulation</option>
+                    </select>
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class='col'>
+                        <p>
+                            <div class='formlabel' style="display:inline; white-space:nowrap;">
+                                windows description
+                            </div>
+                            <div class='tooltip'>
+                                <img src="{{ url_for('static', filename='img/info.png') }}" style="display:inline;" width='50%'>
+                                <span class='tooltiptext'>Type of glazing on the windows
+                                    in the property.
+                                </span>
+                            </div>
+                        </p>
+                    <select name='windows'>
+                        <option>full double glazing</option>
+                        <option>partial double glazing</option>
+                        <option>full triple glazing</option>
+                        <option>partial triple glazing</option>
+                        <option>full secondary glazing</option>
+                        <option>partial secondary glazing</option>
+                        <option>full single glazing</option>
+                    </select>
+                    </div>
+                    <div class='col'>
+                        <p>
+                            <div class='formlabel' style="display:inline; white-space:nowrap;">
+                                photovoltaic solar cells
+                            </div>
+                            <div class='tooltip2'>
+                                <img src="{{ url_for('static', filename='img/info.png') }}" style="display:inline;" width='50%'>
+                                <span class='tooltiptext'>Whether or not the property has solar
+                                    panels for electricity - not hot water.
+                                </span>
+                            </div>
+                        </p>
+                    <select name='solar'>
+                        <option>no</option>
+                        <option>yes</option>
+                    </select>
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class='col'>
+                        <p>
+                            <div class='formlabel' style="display:inline; white-space:nowrap;">
+                                number of open fireplaces
+                            </div>
+                            <div class='tooltip'>
+                                <img src="{{ url_for('static', filename='img/info.png') }}" style="display:inline;" width='50%'>
+                                <span class='tooltiptext'>Fireplaces that allow air to pass between
+                                    the property and its external environment.
+                                </span>
+                            </div>
+                        </p>
+                    <input type='text' name='open_fire' required>
+                    </div>
+                    <div class='col'>
+                        <p>
+                            <div class='formlabel' style="display:inline; white-space:nowrap;">
+                                mechanical ventilation
+                            </div>
+                            <div class='tooltip2'>
+                                <img src="{{ url_for('static', filename='img/info.png') }}" style="display:inline;" width='50%'>
+                                <span class='tooltiptext'>Whether or not the property has
+                                    mechanical ventilation.
+                                </span>
+                            </div>
+                        </p>
+                    <select name='vent'>
+                        <option>no: natural</option>
+                        <option>yes: extract only</option>
+                        <option>yes: supply + extract</option>
+                    </select>
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class='col'>
+                        <p>
+                            <div class='formlabel' style="display:inline; white-space:nowrap;">
+                                number of habitable rooms
+                            </div>
+                            <div class='tooltip'>
+                                <img src="{{ url_for('static', filename='img/info.png') }}" style="display:inline;" width='50%'>
+                                <span class='tooltiptext'>Living rooms,
+                                    dining rooms and bedrooms only.
+                                </span>
+                            </div>
+                        </p>
+                    <input type='text' name='hab_rooms' required>
+                    </div>
+                </div>
+                <div class='submit'>
+                <p> <input type='submit'> </p>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <a id="body3"></a>
+    <div class='contact'>
+        <h2> contact form<br>
+            <br>
+        </h2>
+        <form action="https://formspree.io/xjvajqkq" method="POST">
+            <p>forename</p>
+            <p><input type="text" class="fname" name="fname"></p>
+            <p><br></p>
+            <p>surname</p>
+            <p><input type="text" class="sname" name="sname"></p>
+            <p><br></p>
+            <p>email</p>
+            <p><input type="email" class="email" name="email"></p>
+            <p><br></p>
+            <p>message</p>
+            <p><textarea class="message" name="message"></textarea></p>
+            <p><br></p>
+            <div class='submit'>
+                <p><input type='submit'></p>
+            </div>
+            <input type="hidden" name="_next" value="thanks.html" />
+          </form>
+    </div>
+    <a id="body4"></a>
+    <div class='about'>
+        <p>
+            Our web application consists of sixteen neural networks, <br>
+            which are pre-trained using data from over 750 000 homes <br>
+            across England and Wales. The neural networks are tested <br>
+            against data from 60 000 different homes. <br>
+            <br>
+            <br>
+            Other carbon calculators require users to input their <br>
+            electricity and gas usage (or other fuels), whilst ours uses <br>
+            features of a property, making it useful for home seekers. <br>
+            We also provide potential values and the estimated cost of <br>
+            lighting, and heating and hot water. <br>
+            <br>
+            <br>
+            Training and testing data sourced from Domestic Energy <br>
+            Performance Certificates published by the Ministry of Housing, <br>
+            Communities and Local Government, containing public sector <br>
+            information licensed under the Open Government Licence v3.0. <br>
+            Data entered by users is not collected nor stored. <br>
+            <br>
+            <br>
+            Source code available here: <br>
+            </p>
+    </div>
+    <script>
+        function NavBar() {
+            var x = document.getElementById('TopNav');
+            if (x.className === 'topnav') {
+                x.className += 'responsive';
+            } else {
+                x.className = 'topnav'
+            }
+        }
+    </script>
+    <script type="text/javascript">
+    function toggle1(div1,div2,a_1,a_2)
+    {
+        d1 = document.getElementById(div1);
+        d2 = document.getElementById(div2);
+        a1 = document.getElementById(a_1);
+        a2 = document.getElementById(a_2);
+        a1.style.textShadow = "0 0 10px white";
+        a2.style.textShadow = "none";
+        d1.style.display = "block";
+        d2.style.display = "none";
+    }
+    </script>
+    <script type="text/javascript">
+        function toggle2(div1,div2,a_1,a_2)
+        {
+        d1 = document.getElementById(div1);
+        d2 = document.getElementById(div2);
+        a1 = document.getElementById(a_1);
+        a2 = document.getElementById(a_2);
+        a2.style.textShadow = "0 0 10px white";
+        a1.style.textShadow = "none";
+        d2.style.display = "block";
+        d1.style.display = "none";
+        }
+    </script>
+    <script>
+        function send() {
+      
+          window.location.hash = '#calculate';
+        }
+      </script>
+    </body>
+</html>
