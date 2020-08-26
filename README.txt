@@ -4,7 +4,7 @@ from 67 000 different homes. Uses self-made neural network class, which has four
 
 TRAINING
 Train advanced calculator and save weights using NN_AdvTrain.py. Change path of training data on line 30. Rename path/names of weights on lines 96 - 103, as desired.
-Trainbasic calculator and save weights using NN_BasicTrain.py. Change path of training data on line 30. Rename path/names of weights on lines 90 - 97, as desired.
+Train basic calculator and save weights using NN_BasicTrain.py. Change path of training data on line 30. Rename path/names of weights on lines 90 - 97, as desired.
 
 TESTING
 Test calculators with NN_AdvTest.py and NN_BasicTest.py. Load weights of neural networks with previously set path and filename. Edit filepath of testing data on line 38 of both calculators.
