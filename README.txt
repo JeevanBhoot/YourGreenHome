@@ -10,7 +10,8 @@ TESTING
 Test calculators with NN_AdvTest.py and NN_BasicTest.py. Load weights of neural networks with previously set path and filename. Edit filepath of testing data on line 38 of both calculators.
 
 WEBAPP
-Webapp runs through app.py. Running app.py will start a development server on local host, which can be accessed with http://127.0.0.1:5000/ .
+Webapp runs through main.py. Running main.py will start a development server on local host, which can be accessed with http://127.0.0.1:5000/ .
+Deployed web app can be found here: yourgreenhome.nw.r.appspot.com OR yourgreenhome.appspot.com
 
 REQUIREMENTS
 Enter pip install -r requirements.txt in console.
